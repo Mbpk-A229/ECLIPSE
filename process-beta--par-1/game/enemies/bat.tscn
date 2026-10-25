@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwgilbgfx6p3r"]
+
+[ext_resource type="PackedScene" uid="uid://blivrvuh2cdch" path="res://weapons/baseball_bat/bloody_baseball_bat_with_nails.glb" id="1_cod3w"]
+[ext_resource type="Script" uid="uid://bgmabef1jb3i" path="res://script/marie_sword.gd" id="2_dd2g2"]
+
+[node name="bat" instance=ExtResource("1_cod3w")]
+script = ExtResource("2_dd2g2")

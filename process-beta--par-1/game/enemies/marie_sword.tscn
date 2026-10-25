@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0nsso8whs61y"]
+
+[ext_resource type="Script" uid="uid://bgmabef1jb3i" path="res://script/marie_sword.gd" id="1_xw220"]
+
+[node name="marie_sword" type="Node3D"]
+transform = Transform3D(0.11347144, 0.8180001, -0.563915, 0.105701774, 0.55442107, 0.8254962, 0.98790306, -0.15327673, -0.023552824, 0, 0, 0)
+script = ExtResource("1_xw220")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(0.9959371, 0.08750272, -0.021271333, -0.08729428, 0.99612695, 0.010517985, 0.022109173, -0.0086183995, 0.99971855, 2.2880726, -0.28090286, -2.8117447)
+target_position = Vector3(0, 130, 0)
+collision_mask = 31

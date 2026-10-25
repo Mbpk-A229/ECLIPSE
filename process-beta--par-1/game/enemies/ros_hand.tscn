@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://e4fuyvpq6hsi"]
+
+[node name="ros_hand" type="Node3D"]
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(0.58853346, 0.80555207, -0.06865674, -0.77084005, 0.53350484, -0.3481056, -0.24378903, 0.25779563, 0.93493843, 1.2271042, 9.924036, 0.18043518)
+target_position = Vector3(0, 100, 0)
+collision_mask = 15

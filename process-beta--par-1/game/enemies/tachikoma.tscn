@@ -1,0 +1,201 @@
+[gd_scene load_steps=28 format=3 uid="uid://3ldh6vvajggw"]
+
+[ext_resource type="PackedScene" uid="uid://bskmqt30rgxv4" path="res://game/enemies/enemy.tscn" id="1_jfumo"]
+[ext_resource type="Script" uid="uid://crrw82jly31k4" path="res://script/tachikoma.gd" id="2_capo4"]
+[ext_resource type="PackedScene" uid="uid://bir7ln83soykw" path="res://weapons/quelquonq/tachikoma_-_ghost_in_the_shell.glb" id="2_w75jv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w75jv"]
+radius = 1.3041992
+height = 8.431152
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w75jv"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jfumo"]
+animation = &"Fire"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_w75jv"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_0xbju"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_capo4"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4lna3"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mkpe3"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pecd5"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ua2n"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mtg7r"]
+states/dead/node = SubResource("AnimationNodeAnimation_capo4")
+states/dead/position = Vector2(664, 98)
+states/dying/node = SubResource("AnimationNodeAnimation_4lna3")
+states/dying/position = Vector2(380, 99.333336)
+transitions = ["Start", "dying", SubResource("AnimationNodeStateMachineTransition_mkpe3"), "dying", "dead", SubResource("AnimationNodeStateMachineTransition_pecd5"), "dead", "dying", SubResource("AnimationNodeStateMachineTransition_8ua2n")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0xbju"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ggv2f"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6puiy"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4lna3"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3uklg"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_taum2"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jfumo"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w75jv"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_capo4"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0xbju"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ggv2f"]
+states/idle/node = SubResource("AnimationNodeAnimation_0xbju")
+states/idle/position = Vector2(349.33334, 106)
+states/walk/node = SubResource("AnimationNodeAnimation_ggv2f")
+states/walk/position = Vector2(713.3333, 102)
+states/walk2/node = SubResource("AnimationNodeAnimation_6puiy")
+states/walk2/position = Vector2(542.6667, 264.66666)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_4lna3"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_3uklg"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_taum2"), "idle", "walk2", SubResource("AnimationNodeStateMachineTransition_jfumo"), "walk2", "idle", SubResource("AnimationNodeStateMachineTransition_w75jv"), "walk", "walk2", SubResource("AnimationNodeStateMachineTransition_capo4"), "walk2", "walk", SubResource("AnimationNodeStateMachineTransition_0xbju")]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_6puiy"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_capo4"]
+nodes/output/position = Vector2(586.6667, 213.33333)
+nodes/AttackOneShot/node = SubResource("AnimationNodeOneShot_w75jv")
+nodes/AttackOneShot/position = Vector2(-778.07153, 24.127256)
+nodes/MoveStateMachine/node = SubResource("AnimationNodeStateMachine_ggv2f")
+nodes/MoveStateMachine/position = Vector2(-1333.3334, -133.33333)
+nodes/AttackAnimation/node = SubResource("AnimationNodeAnimation_jfumo")
+nodes/AttackAnimation/position = Vector2(-1339.0399, 239.60284)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_6puiy")
+nodes/OneShot/position = Vector2(-311.16205, 136.66864)
+nodes/DeadOneShot/node = SubResource("AnimationNodeOneShot_0xbju")
+nodes/DeadOneShot/position = Vector2(162.33531, 271.16934)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_w75jv")
+nodes/Animation/position = Vector2(-671.5687, 549.13745)
+nodes/DeadStateMachine/node = SubResource("AnimationNodeStateMachine_mtg7r")
+nodes/DeadStateMachine/position = Vector2(-293.33334, 560)
+node_connections = [&"output", 0, &"DeadOneShot", &"AttackOneShot", 0, &"MoveStateMachine", &"AttackOneShot", 1, &"AttackAnimation", &"OneShot", 0, &"AttackOneShot", &"OneShot", 1, &"Animation", &"DeadOneShot", 0, &"OneShot", &"DeadOneShot", 1, &"DeadStateMachine"]
+
+[node name="Tachikoma" instance=ExtResource("1_jfumo")]
+transform = Transform3D(0.24430591, 0, 0.053052943, 0, 0.25, 0, -0.053052943, 0, 0.24430591, 0, 0, 0)
+script = ExtResource("2_capo4")
+can_attack = false
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(-0.00016055908, 0.0056701005, 0.9999841, 0.99959934, 0.028305402, 0, -0.02830495, 0.99958336, -0.0056723505, -0.6142558, 3.6572828, 1.4901161e-08)
+shape = SubResource("CapsuleShape3D_w75jv")
+
+[node name="AttackTimer" type="Timer" parent="Timers" index="1"]
+wait_time = 2.5
+
+[node name="Sprite3D" parent="HealthBarContainer" index="0"]
+transform = Transform3D(-4.37114e-07, -100.00003, 0, 10, -4.371139e-06, 0, 1.4210855e-14, 1.9073486e-06, 30.000008, 0, 3.9601336, 0)
+
+[node name="skin" parent="." index="3" instance=ExtResource("2_w75jv")]
+transform = Transform3D(-0.32257974, 0, 0.94654274, 0, 1, 0, -0.94654274, 0, -0.32257974, 0, 0, 0)
+
+[node name="Skeleton3D" parent="skin/Sketchfab_model/root/GLTF_SceneRootNode/SkelTank_001_68/GLTF_created_0" index="0"]
+bones/2/position = Vector3(0.32259268, 0.3398928, 0.0004425167)
+bones/3/rotation = Quaternion(0.52026665, -0.47887638, -0.47887632, -0.5202669)
+bones/5/rotation = Quaternion(-0.70428395, -0.063120686, 0.063120686, 0.70428383)
+bones/9/rotation = Quaternion(-0.009151724, 0.003170657, 0.016008629, 0.999825)
+bones/10/rotation = Quaternion(-0.08659372, 0.037425008, 0.075848415, 0.992647)
+bones/11/rotation = Quaternion(-0.029664498, 0.0043244204, 0.027878543, 0.9991617)
+bones/12/rotation = Quaternion(-0.1137539, 0.0056611695, 0.08488347, 0.98986006)
+bones/13/rotation = Quaternion(-0.083477825, -0.0006679626, 0.062194414, 0.9945667)
+bones/14/rotation = Quaternion(-0.0821542, -0.0022949523, 0.059716407, 0.9948263)
+bones/15/rotation = Quaternion(-0.082096644, -0.0032362768, 0.057921875, 0.99493456)
+bones/16/rotation = Quaternion(-0.09808282, -0.0036331103, 0.06566594, 0.9930029)
+bones/17/rotation = Quaternion(-0.051627327, -0.0029747728, 0.03263656, 0.99812853)
+bones/18/rotation = Quaternion(-0.048617184, -0.0017248266, 0.029317472, 0.9983856)
+bones/19/rotation = Quaternion(-0.05894737, 0.0007163468, 0.034118406, 0.9976777)
+bones/20/rotation = Quaternion(-0.06981838, 0.0049324366, 0.036279045, 0.9968876)
+bones/21/rotation = Quaternion(-0.06564306, 0.008710419, 0.029420262, 0.9973713)
+bones/22/rotation = Quaternion(-0.08723899, 0.022191655, 0.034880582, 0.9953292)
+bones/23/rotation = Quaternion(-0.12524217, 0.06987435, 0.035948377, 0.9890095)
+bones/24/rotation = Quaternion(0.013904831, 0.8520548, -0.25922623, -0.45454487)
+bones/25/rotation = Quaternion(-0.7042839, -0.06312068, 0.06312068, 0.7042839)
+bones/26/position = Vector3(-0.0021205815, 0.067292325, -0.07031071)
+bones/27/rotation = Quaternion(2.6081557e-07, 0.7071087, 6.346396e-07, 0.70710486)
+bones/29/rotation = Quaternion(0.02176285, 0.020584174, 0.04031464, 0.9987379)
+bones/30/rotation = Quaternion(-0.068021774, 0.041985724, -0.04043082, 0.9959797)
+bones/31/rotation = Quaternion(-0.027155979, 0.017909769, -0.006021303, 0.99945265)
+bones/32/rotation = Quaternion(-0.11569369, -0.0027251958, -0.08766638, 0.989405)
+bones/33/rotation = Quaternion(-0.10087381, -0.0016169612, -0.07003167, 0.9924301)
+bones/34/rotation = Quaternion(-0.10788436, -0.004514831, -0.07422957, 0.9913782)
+bones/35/rotation = Quaternion(-0.11234417, -0.006397621, -0.07645634, 0.990703)
+bones/36/rotation = Quaternion(-0.1285125, -0.011096617, -0.08550515, 0.98795265)
+bones/37/rotation = Quaternion(-0.07750596, 0.00015175075, -0.050669156, 0.9957035)
+bones/38/rotation = Quaternion(-0.06502671, 0.0020283856, -0.045956507, 0.9968227)
+bones/39/rotation = Quaternion(-0.06442699, 0.003648979, -0.048552323, 0.996734)
+bones/40/rotation = Quaternion(-0.061258256, 0.008638926, -0.04854045, 0.99690354)
+bones/41/rotation = Quaternion(-0.038646642, 0.01586805, -0.038104508, 0.9984001)
+bones/42/rotation = Quaternion(-0.039758127, 0.028766021, -0.041994717, 0.997912)
+bones/43/rotation = Quaternion(-0.04952733, 0.07310352, -0.05379622, 0.9946401)
+bones/44/rotation = Quaternion(0.06074005, 0.77399516, -0.17786595, 0.6046535)
+bones/46/rotation = Quaternion(0.71124566, -0.11510087, 0.109870225, 0.68469703)
+bones/47/rotation = Quaternion(-1.8744531e-05, 0.9120748, 0.4100239, -5.564788e-05)
+bones/49/rotation = Quaternion(0.06874377, -0.6496235, 0.7537091, 0.07201567)
+bones/50/rotation = Quaternion(-5.5558372e-05, 0.9438818, 0.33028343, 1.9488109e-05)
+bones/52/rotation = Quaternion(0.7948196, 3.866539e-05, -3.3342665e-05, 0.60684574)
+bones/53/rotation = Quaternion(0.25198415, 5.3682525e-05, 3.6154554e-05, 0.96773136)
+bones/54/rotation = Quaternion(0.74687487, 0.20758983, -0.27187574, 0.57023513)
+bones/55/rotation = Quaternion(0.25198394, 5.3645297e-05, 3.6279278e-05, 0.9677315)
+bones/56/rotation = Quaternion(-0.27181292, -0.5702618, 0.7468975, -0.20751707)
+bones/57/rotation = Quaternion(0.25198418, 5.369731e-05, 3.6189653e-05, 0.9677314)
+bones/58/rotation = Quaternion(3.3374123e-05, -0.6068445, 0.79482067, 3.8693364e-05)
+bones/59/rotation = Quaternion(0.2519818, 5.3661806e-05, 3.6103775e-05, 0.9677321)
+bones/60/position = Vector3(-0.15799673, 0.70772743, 0.81608564)
+bones/61/position = Vector3(-0.16894306, 0.6305656, -0.8662065)
+bones/66/position = Vector3(-0.7992112, 0.30881634, -0.23613927)
+bones/66/rotation = Quaternion(0.033915825, 0.70629305, 0.7062928, -0.03391595)
+bones/67/position = Vector3(-0.79792047, 0.30881622, 0.15731695)
+bones/67/rotation = Quaternion(-0.7062931, 0.033915717, 0.033916395, 0.70629275)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="skin/Sketchfab_model/root/GLTF_SceneRootNode/SkelTank_001_68/GLTF_created_0/Skeleton3D" index="1"]
+transform = Transform3D(0.095819004, -0.9953986, 1.5132846e-07, 1.3763797e-07, -2.7401262e-07, -0.9999998, 0.9953988, 0.095818974, 1.8453076e-07, -0.7604081, 0.29615992, 0.14613813)
+bone_name = "MinigunMagazine_Left_22"
+bone_idx = 26
+
+[node name="firemarker1" type="Marker3D" parent="skin/Sketchfab_model/root/GLTF_SceneRootNode/SkelTank_001_68/GLTF_created_0/Skeleton3D/BoneAttachment3D" index="0"]
+transform = Transform3D(-0.019716084, 7.119959e-08, 0.19902582, -0.19902588, -9.536742e-08, -0.019716088, 9.974692e-08, -0.20000003, 8.142932e-08, -0.20455405, 0.24953139, -0.0035871267)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="4"]
+root_node = NodePath("../skin")
+tree_root = SubResource("AnimationNodeBlendTree_capo4")
+anim_player = NodePath("../skin/AnimationPlayer")
+parameters/AttackOneShot/active = false
+parameters/AttackOneShot/internal_active = false
+parameters/AttackOneShot/request = 0
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+parameters/DeadOneShot/active = false
+parameters/DeadOneShot/internal_active = false
+parameters/DeadOneShot/request = 0
+
+[connection signal="timeout" from="Timers/AttackTimer" to="." method="_on_attack_timer_timeout"]
+
+[editable path="skin"]

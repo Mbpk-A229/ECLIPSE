@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://5utc18ajexbm"]
+
+[ext_resource type="PackedScene" uid="uid://clsew8forofvt" path="res://weapons/quelquonq/ax_-_solitude_ember_-_3d_model_stylized.glb" id="1_u2cgd"]
+[ext_resource type="Script" uid="uid://bgmabef1jb3i" path="res://script/marie_sword.gd" id="2_pkcsn"]
+
+[node name="ax" instance=ExtResource("1_u2cgd")]
+script = ExtResource("2_pkcsn")

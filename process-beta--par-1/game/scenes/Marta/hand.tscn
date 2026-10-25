@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmlgcgxsthnne"]
+
+[ext_resource type="Script" uid="uid://b6tr3jhxaawp0" path="res://script/hand.gd" id="1_kwl1g"]
+
+[node name="hand" type="Node3D"]
+script = ExtResource("1_kwl1g")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 43, 0)
+collision_mask = 15

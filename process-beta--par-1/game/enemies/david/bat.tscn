@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://xi5jfv5wbi8x"]
+
+[ext_resource type="PackedScene" uid="uid://blivrvuh2cdch" path="res://weapons/baseball_bat/bloody_baseball_bat_with_nails.glb" id="1_ush64"]
+
+[node name="bat" instance=ExtResource("1_ush64")]

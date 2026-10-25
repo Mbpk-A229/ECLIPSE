@@ -1,0 +1,18 @@
+extends Node3D
+
+var can_damage := false
+var can_damage_t := false
+
+func _process(_delta: float) -> void:
+	if can_damage:
+		var collider = $RayCast3D.get_collider()
+		if collider and 'hit_player' in collider:
+			collider.hit_player()
+		elif collider and 'hit' in collider:
+			collider.hit()
+	if can_damage_t:
+		var collider = $RayCast3D.get_collider()
+		if collider and 'hit_player' in collider:
+			collider.hit_player()
+		elif collider and 'hit' in collider:
+			collider.hit()

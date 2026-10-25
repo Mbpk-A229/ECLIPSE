@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://n5vfepp2mu2e"]
+
+[ext_resource type="Script" uid="uid://uja8xa7dwabo" path="res://script/fireball.gd" id="1_n62sx"]
+[ext_resource type="AudioStream" uid="uid://82yuvjxfyukl" path="res://sound/rifle_sound.wav" id="2_n62sx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_deqrg"]
+radius = 0.119392306
+
+[node name="Fireball" type="Area3D"]
+transform = Transform3D(-0.24993539, -6.287606e-05, 0.005683036, 0.00027706227, 0.24955268, 0.014945981, -0.005676627, 0.0149484165, -0.24948812, 0, 0, 0)
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("1_n62sx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.0563388, -0.032310408, 0.0083432775, 0.00864562, 0.004877001, -2.0079713, 0.0366493, 1.8117383, 0.0055540353, 0, 0, 0)
+shape = SubResource("SphereShape3D_deqrg")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.40000007, 0, 0, 0, 0.40000004, 0, 0, 0)
+layers = 8193
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_n62sx")

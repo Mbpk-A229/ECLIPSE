@@ -1,0 +1,161 @@
+[gd_scene load_steps=12 format=3 uid="uid://6ckk3haqpx3u"]
+
+[ext_resource type="Script" uid="uid://dwah1id0w31nl" path="res://script/character_body_3d.gd" id="1_ia5pm"]
+[ext_resource type="PackedScene" uid="uid://clbj5ieoc3aqm" path="res://game/scenes/camera_controller.tscn" id="2_wuq1m"]
+[ext_resource type="PackedScene" uid="uid://dpltg4yju1qsg" path="res://game/scenes/Marta/marta_skin.tscn" id="3_qgd3b"]
+[ext_resource type="Texture2D" uid="uid://cvctbwxdf8a26" path="res://icon.svg" id="4_eejrt"]
+[ext_resource type="Texture2D" uid="uid://bo5mlywyc1t06" path="res://icon/punch.jpg" id="5_4nwaf"]
+[ext_resource type="PackedScene" uid="uid://by7o8fa0jswy5" path="res://game/scenes/Marta/ui.tscn" id="5_dbeaq"]
+[ext_resource type="Texture2D" uid="uid://uf3hifb12arn" path="res://icon/sword_.png" id="6_7q3uh"]
+[ext_resource type="Texture2D" uid="uid://fgoayqoy5mdh" path="res://icon/bow.jpg" id="7_7v2xl"]
+[ext_resource type="Texture2D" uid="uid://d07tkdi22eba6" path="res://icon/ak_.png" id="8_8p58i"]
+[ext_resource type="AudioStream" uid="uid://xm15tx7yhmad" path="res://sound/damage_sond.wav" id="10_7q3uh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wuq1m"]
+radius = 0.42236328
+height = 1.7814941
+
+[node name="player" type="CharacterBody3D" groups=["Player"]]
+collision_layer = 3
+collision_mask = 5
+script = ExtResource("1_ia5pm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8256335, 0)
+visible = false
+shape = SubResource("CapsuleShape3D_wuq1m")
+
+[node name="CameraController" parent="." instance=ExtResource("2_wuq1m")]
+spring_length = 4.0
+min_limit_x = -0.9
+horizontal_acceleration = 0.5
+
+[node name="MartaSkin" parent="." instance=ExtResource("3_qgd3b")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Crosshair" type="TextureRect" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -742.0
+offset_top = 350.0
+offset_right = -614.0
+offset_bottom = 478.0
+grow_horizontal = 0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_eejrt")
+
+[node name="WeaponBar" type="HBoxContainer" parent="HUD"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -56.0
+offset_right = -24.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="PunchSlot" type="Panel" parent="HUD/WeaponBar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="PunchIcon" type="TextureRect" parent="HUD/WeaponBar/PunchSlot"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_4nwaf")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SwordSlot" type="Panel" parent="HUD/WeaponBar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="SwordIcon" type="TextureRect" parent="HUD/WeaponBar/SwordSlot"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_7q3uh")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="BowSlot" type="Panel" parent="HUD/WeaponBar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="BowIcon" type="TextureRect" parent="HUD/WeaponBar/BowSlot"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_7v2xl")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="AkSlot" type="Panel" parent="HUD/WeaponBar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="AkIcon" type="TextureRect" parent="HUD/WeaponBar/AkSlot"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_8p58i")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="DialogBox" type="Panel" parent="HUD"]
+visible = false
+offset_right = 400.0
+offset_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/DialogBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NPCNameLabel" type="Label" parent="HUD/DialogBox/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="ChatHistory" type="ScrollContainer" parent="HUD/DialogBox/VBoxContainer"]
+custom_minimum_size = Vector2(0, 450)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MessageList" type="VBoxContainer" parent="HUD/DialogBox/VBoxContainer/ChatHistory"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InputRow" type="HBoxContainer" parent="HUD/DialogBox/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="PlayerInput" type="LineEdit" parent="HUD/DialogBox/VBoxContainer/InputRow"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Ecrire un message"
+
+[node name="SendButton" type="Button" parent="HUD/DialogBox/VBoxContainer/InputRow"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Envoyer
+"
+
+[node name="Timers" type="Node3D" parent="."]
+
+[node name="InvulTimer" type="Timer" parent="Timers"]
+wait_time = 0.8
+one_shot = true
+
+[node name="Timer" type="Timer" parent="Timers"]
+
+[node name="UI" parent="." instance=ExtResource("5_dbeaq")]
+
+[node name="AudioDamage" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_7q3uh")

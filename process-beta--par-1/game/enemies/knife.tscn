@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdp1s1bv65hgg"]
+
+[ext_resource type="PackedScene" uid="uid://btuo6bfoyyq26" path="res://weapons/knife/utility_knife.glb" id="1_nescd"]
+
+[node name="knife" instance=ExtResource("1_nescd")]

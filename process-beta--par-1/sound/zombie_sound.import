@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://7eckm2c4yqvo"
+path="res://.godot/imported/CREAHmn_Zombie 1 (ID 2106)_LaSonotheque.fr.wav-5de8ebfe2f82af029ef449d7cbf5a59d.sample"
+
+[deps]
+
+source_file="res://sound/CREAHmn_Zombie 1 (ID 2106)_LaSonotheque.fr.wav"
+dest_files=["res://.godot/imported/CREAHmn_Zombie 1 (ID 2106)_LaSonotheque.fr.wav-5de8ebfe2f82af029ef449d7cbf5a59d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

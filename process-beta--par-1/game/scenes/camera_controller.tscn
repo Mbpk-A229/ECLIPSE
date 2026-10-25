@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://clbj5ieoc3aqm"]
+
+[ext_resource type="Script" uid="uid://dknk3kpsimak1" path="res://game/player/camera_controller.gd" id="1_1kwht"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1kwht"]
+
+[sub_resource type="Animation" id="Animation_8rj1q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+
+[sub_resource type="Animation" id="Animation_0n1bv"]
+resource_name = "zoom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [75.0, 45.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6bjyy"]
+_data = {
+&"RESET": SubResource("Animation_8rj1q"),
+&"zoom": SubResource("Animation_0n1bv")
+}
+
+[node name="CameraController" type="SpringArm3D"]
+transform = Transform3D(0.9999768, 4.7875954e-05, -0.006806563, 0, 0.99997526, 0.0070336186, 0.0068067317, -0.0070334557, 0.9999521, 0, 0, 0)
+shape = SubResource("SphereShape3D_1kwht")
+spring_length = 6.5
+script = ExtResource("1_1kwht")
+aim_vertical_limit_degrees = 360.0
+
+[node name="CameraPivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(0.9999945, 0.0033196812, -0.00058279093, -0.003259571, 0.9085439, -0.4177768, -0.0008573951, 0.41777617, 0.9085496, 0, 0, 0)
+current = true
+
+[node name="AimAnimPlayer" type="AnimationPlayer" parent="CameraPivot/Camera3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_6bjyy")
+}

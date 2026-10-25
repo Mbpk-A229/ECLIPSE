@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://0gxh0xifde7v"]
+
+[ext_resource type="Script" uid="uid://b73d14eosptgw" path="res://script/environment_element.gd" id="1_tfrsp"]
+[ext_resource type="PackedScene" uid="uid://dm0iysbxejjpc" path="res://game/environnement/grass/grass_t.glb" id="2_h5xaq"]
+
+[node name="grass" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+script = ExtResource("1_tfrsp")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_h5xaq")]

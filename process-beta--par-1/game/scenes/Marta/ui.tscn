@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://by7o8fa0jswy5"]
+
+[ext_resource type="Script" uid="uid://dd7gp6r4wggm" path="res://game/scenes/Marta/ui.gd" id="1_s0seq"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s0seq")
+
+[node name="Hearts" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Hearts"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hearts/MarginContainer"]
+layout_mode = 2

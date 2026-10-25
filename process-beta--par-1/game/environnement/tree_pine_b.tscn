@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwuv5wtot8chb"]
+
+[ext_resource type="PackedScene" uid="uid://ceg2wujuivku8" path="res://game/environnement/trees/sapin_b.glb" id="1_cqj3o"]
+[ext_resource type="Script" uid="uid://b73d14eosptgw" path="res://script/environment_element.gd" id="1_ye46e"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cqj3o"]
+radius = 0.20214844
+
+[node name="tree_pine_b" type="StaticBody3D"]
+script = ExtResource("1_ye46e")
+
+[node name="sapin_b" parent="." instance=ExtResource("1_cqj3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18854702, 0, -0.040822744)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0762591, 0)
+shape = SubResource("CapsuleShape3D_cqj3o")
+
+[editable path="sapin_b"]

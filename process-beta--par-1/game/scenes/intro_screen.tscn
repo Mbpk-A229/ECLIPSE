@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://bddbjmk8mew0r"]
+
+[ext_resource type="Script" uid="uid://cbrt5jbh7yntk" path="res://script/intro_screen.gd" id="1_7fjcp"]
+[ext_resource type="Texture2D" uid="uid://duslxx6lpswq1" path="res://vfx/game_img.png" id="2_aatvk"]
+[ext_resource type="AudioStream" uid="uid://uptxvwuef6c4" path="res://sound/game_sound.wav" id="3_aatvk"]
+
+[node name="IntroScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7fjcp")
+
+[node name="BackgroundImage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 1104.0
+offset_bottom = 980.0
+scale = Vector2(1.04, 1)
+texture = ExtResource("2_aatvk")
+
+[node name="Overlay" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 0
+offset_left = 270.0
+offset_top = 27.0
+offset_right = 870.0
+offset_bottom = 629.0
+color = Color(0.003921569, 0.003921569, 0.007843138, 0.5882353)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 0
+offset_left = 294.0
+offset_top = 34.0
+offset_right = 894.0
+offset_bottom = 638.0
+scale = Vector2(0.9388182, 0.91999924)
+
+[node name="TextLabel" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(600, 500)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(600, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "continue"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="LoadingLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_aatvk")
+autoplay = true

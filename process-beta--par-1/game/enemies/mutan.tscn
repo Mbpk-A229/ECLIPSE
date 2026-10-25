@@ -1,0 +1,216 @@
+[gd_scene load_steps=29 format=3 uid="uid://4u8qqw8st2a"]
+
+[ext_resource type="PackedScene" uid="uid://bskmqt30rgxv4" path="res://game/enemies/enemy.tscn" id="1_70p1v"]
+[ext_resource type="Script" uid="uid://bpjixyamye5vf" path="res://script/mutan.gd" id="2_0hle2"]
+[ext_resource type="PackedScene" uid="uid://bnpbgipa7ckxu" path="res://game/enemies/monsters/mutan.glb" id="2_qqwe7"]
+[ext_resource type="Script" uid="uid://15gqjgdjmx32" path="res://script/hand_worker.gd" id="4_iktjm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iktjm"]
+radius = 0.26123047
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0hle2"]
+animation = &"mixamo_com_010"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iktjm"]
+animation = &"mixamo_com_027"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_akqq4"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_hws2a"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oyo77"]
+animation = &"mixamo_com_019"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jsyne"]
+animation = &"mixamo_com_024"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dk6q7"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h3n31"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i4w2p"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_oyo77"]
+states/dead/node = SubResource("AnimationNodeAnimation_oyo77")
+states/dead/position = Vector2(661.3334, 98.888885)
+states/dying/node = SubResource("AnimationNodeAnimation_jsyne")
+states/dying/position = Vector2(405.33334, 99.77777)
+transitions = ["Start", "dying", SubResource("AnimationNodeStateMachineTransition_dk6q7"), "dying", "dead", SubResource("AnimationNodeStateMachineTransition_h3n31"), "dead", "dying", SubResource("AnimationNodeStateMachineTransition_i4w2p")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qqwe7"]
+animation = &"mixamo_com_023"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_akqq4"]
+animation = &"mixamo_com_028"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hws2a"]
+animation = &"mixamo_com_028"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oyo77"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jsyne"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_npg4i"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ocd40"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a42ph"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wa48i"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_elup2"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jsyne"]
+states/idle/node = SubResource("AnimationNodeAnimation_qqwe7")
+states/idle/position = Vector2(352, 94)
+states/walk/node = SubResource("AnimationNodeAnimation_akqq4")
+states/walk/position = Vector2(677.3333, 100.666664)
+states/walk2/node = SubResource("AnimationNodeAnimation_hws2a")
+states/walk2/position = Vector2(509.33334, 242)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_oyo77"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_jsyne"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_npg4i"), "idle", "walk2", SubResource("AnimationNodeStateMachineTransition_ocd40"), "walk2", "idle", SubResource("AnimationNodeStateMachineTransition_a42ph"), "walk", "walk2", SubResource("AnimationNodeStateMachineTransition_wa48i"), "walk2", "walk", SubResource("AnimationNodeStateMachineTransition_elup2")]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_npg4i"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ocd40"]
+graph_offset = Vector2(-732.9577, 115.35181)
+nodes/output/position = Vector2(800, 266.66666)
+nodes/AttackOneShot/node = SubResource("AnimationNodeOneShot_akqq4")
+nodes/AttackOneShot/position = Vector2(-705.2595, 176.36067)
+nodes/MoveStateMachine/node = SubResource("AnimationNodeStateMachine_jsyne")
+nodes/MoveStateMachine/position = Vector2(-1062.9215, 212.04454)
+nodes/AttackAnimation/node = SubResource("AnimationNodeAnimation_iktjm")
+nodes/AttackAnimation/position = Vector2(-940.7727, 502.54785)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_npg4i")
+nodes/OneShot/position = Vector2(-133.33333, 186.66667)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_0hle2")
+nodes/Animation/position = Vector2(-471.5756, 489.73825)
+nodes/DeadOneShot/node = SubResource("AnimationNodeOneShot_hws2a")
+nodes/DeadOneShot/position = Vector2(460.77966, 321.1091)
+nodes/DeadStateMachine/node = SubResource("AnimationNodeStateMachine_oyo77")
+nodes/DeadStateMachine/position = Vector2(162.95662, 574.8306)
+node_connections = [&"output", 0, &"DeadOneShot", &"AttackOneShot", 0, &"MoveStateMachine", &"AttackOneShot", 1, &"AttackAnimation", &"OneShot", 0, &"AttackOneShot", &"OneShot", 1, &"Animation", &"DeadOneShot", 0, &"OneShot", &"DeadOneShot", 1, &"DeadStateMachine"]
+
+[node name="Mutan" instance=ExtResource("1_70p1v")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+script = ExtResource("2_0hle2")
+can_attack = false
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7024245, 0)
+shape = SubResource("CapsuleShape3D_iktjm")
+
+[node name="AttackTimer" type="Timer" parent="Timers" index="1"]
+wait_time = 2.555
+
+[node name="skin" parent="." index="3" instance=ExtResource("2_qqwe7")]
+
+[node name="Skeleton3D" parent="skin/Armature" index="0"]
+bones/0/position = Vector3(0.33832514, 2.1044686, -81.30963)
+bones/0/rotation = Quaternion(-0.70883095, -0.0047591277, -0.0068331133, 0.7053293)
+bones/1/position = Vector3(1.7609951e-05, 10.763861, 1.2435163)
+bones/1/rotation = Quaternion(0.14562605, 0.0014294605, 0.00498632, 0.9893261)
+bones/2/rotation = Quaternion(0.118664674, 0.002265165, 0.0087183565, 0.99289364)
+bones/3/position = Vector3(-1.7405455e-10, 13.020566, -2.0066998e-06)
+bones/3/rotation = Quaternion(0.12090622, 0.0018554332, 0.0071949675, 0.99263614)
+bones/4/position = Vector3(-0.011927325, 24.67064, 2.0280972)
+bones/4/rotation = Quaternion(0.031014504, -0.0113380095, 0.007525838, 0.9994263)
+bones/5/rotation = Quaternion(-0.1877123, 0.022312123, -0.019107234, 0.98178476)
+bones/6/position = Vector3(2.9057264e-07, 20.493948, -0.28250673)
+bones/7/rotation = Quaternion(0.5828701, 0.5414327, -0.28133467, 0.5366227)
+bones/8/position = Vector3(6.59422e-06, 18.035505, 7.791857e-06)
+bones/8/rotation = Quaternion(0.31943947, -0.22011752, 0.22720356, 0.8932443)
+bones/9/position = Vector3(-4.952917e-07, 26.41509, -5.281585e-06)
+bones/9/rotation = Quaternion(0.14725068, 0.057609137, 0.43803275, 0.88494396)
+bones/10/position = Vector3(2.8133622e-06, 26.753424, 3.5653648e-06)
+bones/10/rotation = Quaternion(-2.4213476e-08, 2.7939593e-09, 8.228262e-09, 1)
+bones/11/rotation = Quaternion(0.5537299, -0.5629555, 0.31031132, 0.5293121)
+bones/12/position = Vector3(-1.2282995e-05, 17.955053, -6.1644623e-06)
+bones/12/rotation = Quaternion(0.44094235, 0.15388119, -0.14935389, 0.8715411)
+bones/13/position = Vector3(-8.57591e-06, 26.415094, 1.3542431e-06)
+bones/13/rotation = Quaternion(0.11476855, 0.1096367, -0.5619213, 0.81182045)
+bones/14/position = Vector3(3.5110888e-06, 26.753437, 2.7938804e-06)
+bones/14/rotation = Quaternion(0.19082344, 0.025144562, 0.18258815, 0.96416587)
+bones/15/position = Vector3(8.654241, 18.447786, -1.4796492)
+bones/15/rotation = Quaternion(0.32082704, -0.23802894, -0.19849893, 0.89499193)
+bones/16/position = Vector3(-7.9505635e-06, 7.514385, 2.595249e-06)
+bones/16/rotation = Quaternion(0.13835405, -0.0041775573, -0.11192535, 0.9840293)
+bones/17/position = Vector3(-3.2037033e-06, 7.4893894, -4.7541325e-06)
+bones/17/rotation = Quaternion(0.15823628, 0.02837216, -0.10497493, 0.98139524)
+bones/18/position = Vector3(6.467826e-07, 6.76971, 1.1026859e-06)
+bones/19/position = Vector3(-10.003095, 17.507753, 0.4779686)
+bones/19/rotation = Quaternion(0.38501093, 0.70167303, 0.019786408, 0.5991912)
+bones/20/position = Vector3(2.1527146e-06, 7.044223, 1.3406459e-06)
+bones/20/rotation = Quaternion(0.0004674552, 1.4098999e-05, 0.26473802, 0.96432024)
+bones/21/position = Vector3(1.6511694e-06, 7.0789056, 7.428312e-07)
+bones/21/rotation = Quaternion(0.00037659908, -5.873651e-05, 0.3516887, 0.93611693)
+bones/22/position = Vector3(-3.7132486e-06, 7.0929575, -3.191075e-06)
+bones/23/position = Vector3(6.163476, 2.492297, 4.4463825)
+bones/23/rotation = Quaternion(0.3490762, -0.32285193, -0.2798054, 0.8340393)
+bones/24/position = Vector3(2.67185e-07, 10.473003, -7.302699e-07)
+bones/24/rotation = Quaternion(-0.13866222, -0.06323024, 0.20562582, 0.9666917)
+bones/25/position = Vector3(8.0682094e-07, 8.498764, -1.5008918e-06)
+bones/25/rotation = Quaternion(-0.10468738, -0.09992312, 0.061121885, 0.987583)
+bones/26/position = Vector3(-5.1259985e-06, 8.02527, 7.5697885e-06)
+bones/27/rotation = Quaternion(0.07829846, 0.2850898, 0.92893976, -0.2228547)
+bones/28/rotation = Quaternion(-0.45979565, 0.017695924, -0.09197851, 0.8830713)
+bones/29/position = Vector3(6.0067487e-07, 34.409336, -2.1123657e-07)
+bones/29/rotation = Quaternion(0.52508414, 0.04252832, -0.10440118, 0.84355116)
+bones/30/rotation = Quaternion(0.4160028, 0.038630176, -0.12053099, 0.900512)
+bones/31/position = Vector3(-2.2290214e-06, 16.883816, 5.961738e-08)
+bones/32/rotation = Quaternion(-0.16506234, 0.28923675, 0.9277389, 0.16851433)
+bones/33/rotation = Quaternion(-0.4535629, -0.07345026, 0.0014023624, 0.88819134)
+bones/34/rotation = Quaternion(0.5182213, 0.0017266911, 0.12979206, 0.84533876)
+bones/35/rotation = Quaternion(0.42513713, 0.06903321, 0.13641565, 0.89212316)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="skin/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.49052376, 0.1900571, 0.85044926, 0.66170526, 0.5538004, -0.5054218, -0.5670388, 0.8106684, 0.14589053, -43.306725, 19.923513, -110.50992)
+bone_name = "mixamorig_RightForeArm"
+bone_idx = 13
+
+[node name="m_hand" type="Node3D" parent="skin/Armature/Skeleton3D/BoneAttachment3D" index="0"]
+script = ExtResource("4_iktjm")
+
+[node name="RayCast3D" type="RayCast3D" parent="skin/Armature/Skeleton3D/BoneAttachment3D/m_hand" index="0"]
+target_position = Vector3(0, 90, 0)
+collision_mask = 31
+
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="skin/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.8514955, -0.22519608, -0.47354257, -0.38185945, 0.35259905, -0.8543172, 0.3593595, 0.90827376, 0.21424311, 43.51074, 29.313963, -109.733734)
+bone_name = "mixamorig_LeftForeArm"
+bone_idx = 9
+
+[node name="m_leg" type="Node3D" parent="skin/Armature/Skeleton3D/BoneAttachment3D2" index="0"]
+script = ExtResource("4_iktjm")
+
+[node name="RayCast3D" type="RayCast3D" parent="skin/Armature/Skeleton3D/BoneAttachment3D2/m_leg" index="0"]
+transform = Transform3D(0.80167764, -0.03286799, 0.5968523, 0.20101357, 0.95516074, -0.21739724, -0.56294465, 0.29425788, 0.77233773, 0.9867735, 0.27921295, 1.3609009)
+target_position = Vector3(0, 100, 0)
+collision_mask = 31
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="4"]
+root_node = NodePath("../skin")
+tree_root = SubResource("AnimationNodeBlendTree_ocd40")
+anim_player = NodePath("../skin/AnimationPlayer")
+parameters/AttackOneShot/active = false
+parameters/AttackOneShot/internal_active = false
+parameters/AttackOneShot/request = 0
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+parameters/DeadOneShot/active = false
+parameters/DeadOneShot/internal_active = false
+parameters/DeadOneShot/request = 0
+
+[connection signal="timeout" from="Timers/AttackTimer" to="." method="_on_attack_timer_timeout"]
+
+[editable path="skin"]

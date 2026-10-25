@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqas24ksd6q6q"]
+
+[ext_resource type="PackedScene" uid="uid://cnjbmkpeg38f2" path="res://game/environnement/cliffs/sapin_d.glb" id="1_6h82w"]
+
+[node name="MultiRock" type="StaticBody3D"]
+
+[node name="sapin_d" parent="." instance=ExtResource("1_6h82w")]
+
+[editable path="sapin_d"]

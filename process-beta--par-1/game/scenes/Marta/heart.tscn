@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8lcvacq7n5yy"]
+
+[ext_resource type="Shader" uid="uid://cfiimxe638blu" path="res://game/scenes/Marta/heart.gdshader" id="1_03y1b"]
+[ext_resource type="Texture2D" uid="uid://c1bbbjkvgcdml" path="res://game/player/ui/heart.png" id="1_mshnj"]
+[ext_resource type="Script" uid="uid://hox8pmu8me21" path="res://game/scenes/Marta/heart.gd" id="3_488tf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u6pwl"]
+shader = ExtResource("1_03y1b")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/progress = 0.0
+shader_parameter/alpha = 1.0
+
+[node name="Heart" type="TextureRect"]
+material = SubResource("ShaderMaterial_u6pwl")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_mshnj")
+expand_mode = 2
+stretch_mode = 4
+script = ExtResource("3_488tf")
